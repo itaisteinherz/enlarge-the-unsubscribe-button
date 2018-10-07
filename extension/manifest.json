@@ -1,0 +1,31 @@
+{
+	"name": "Enlarge the Unsubscribe Button",
+	"version": "0.0.0",
+	"description": "Enlarge the \"unsubscribe\" button in emails",
+	"homepage_url": "https://github.com/itaisteinherz/enlarge-the-unsubscribe-button",
+	"manifest_version": 2,
+	"minimum_chrome_version": "69",
+	"icons": {
+		"128": "icon-128.png"
+	},
+	"browser_action": {
+		"default_icon": "icon-38.png"
+	},
+	"permissions": [
+		"https://mail.google.com/*"
+	],
+	"content_scripts": [
+		{
+			"run_at": "document_end",
+			"matches": [
+				"https://mail.google.com/*"
+			],
+			"css": [
+				"content.css"
+			],
+			"js": [
+				"content.js"
+			]
+		}
+	]
+}

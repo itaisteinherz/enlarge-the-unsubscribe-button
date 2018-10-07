@@ -1,0 +1,19 @@
+{
+	"scripts": {
+		"test": "xo"
+	},
+	"devDependencies": {
+		"xo": "*"
+	},
+	"xo": {
+		"envs": [
+			"browser"
+		],
+		"rules": {
+			"quotes": [
+				"error",
+				"double"
+			]
+		}
+	}
+}
