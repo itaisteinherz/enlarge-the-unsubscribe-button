@@ -13,6 +13,7 @@
 		"node": ">=8"
 	},
 	"scripts": {
+		"version": "VERSION=$(dot-json package.json version); dot-json extension/manifest.json version $VERSION",
 		"test": "xo"
 	},
 	"files": [
@@ -28,6 +29,7 @@
 		"extension"
 	],
 	"devDependencies": {
+		"dot-json": "^1.1.0",
 		"xo": "^0.24.0"
 	},
 	"xo": {
