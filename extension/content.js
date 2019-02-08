@@ -1,7 +1,6 @@
 "use strict";
-
 const select = document.querySelector.bind(document);
-select.all = document.querySelectorAll.bind(document);
+const selectAll = document.querySelectorAll.bind(document);
 
 const domLoaded = new Promise(resolve => {
 	setInterval(() => {
@@ -12,10 +11,10 @@ const domLoaded = new Promise(resolve => {
 });
 
 const update = () => {
-	const enlargeRegExp = /^Unsubscribe/i;
-	const links = select.all("a");
+	const enlargeRegExp = /^unsubscribe/i;
+	const links = selectAll("a");
 
-	if (links.length === 0) {
+	if (!links || links.length === 0) {
 		return;
 	}
 
@@ -37,7 +36,7 @@ const update = () => {
 		return;
 	}
 
-	select("div.nH.if").insertBefore(fragment, select("div.nH.aHU"));
+	select("div.nH.aHU").before(fragment);
 	createdButtons = true;
 };
 
@@ -47,7 +46,7 @@ let locationChanged = false;
 const init = () => {
 	update();
 
-	window.addEventListener("hashchange", () => { // Update on page change
+	window.addEventListener("hashchange", () => { // Update on navigation
 		if (createdButtons && !locationChanged) {
 			locationChanged = true;
 		} else if (!createdButtons || locationChanged) {

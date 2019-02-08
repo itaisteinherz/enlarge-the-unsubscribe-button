@@ -7,6 +7,7 @@
 		<img src="media/screenshot.png" width="1107">
 	</a>
 </div>
+<br>
 
 Inspired by [Bored Elon Musk](https://twitter.com/boredelonmusk):
 
