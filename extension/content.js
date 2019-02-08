@@ -22,14 +22,14 @@ const update = () => {
 	const fragment = document.createDocumentFragment();
 	const enlarged = document.createElement("div");
 	enlarged.classList.add("unsubscribe-container");
-	fragment.appendChild(enlarged);
+	fragment.append(enlarged);
 
 	for (const link of links) {
 		if (enlargeRegExp.test(link.textContent)) {
 			const bigLink = link.cloneNode(true);
 			bigLink.style = {};
 			bigLink.classList.add("unsubscribe");
-			enlarged.appendChild(bigLink);
+			enlarged.append(bigLink);
 		}
 	}
 

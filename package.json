@@ -1,9 +1,34 @@
 {
+	"name": "tiktek",
+	"version": "0.0.0",
+	"description": "Enlarge the \"unsubscribe\" button in emails",
+	"license": "MIT",
+	"repository": "itaisteinherz/enlarge-the-unsubscribe-button",
+	"author": {
+		"name": "Itai Steinherz",
+		"email": "itaisteinherz@gmail.com",
+		"url": "github.com/itaisteinherz"
+	},
+	"engines": {
+		"node": ">=8"
+	},
 	"scripts": {
 		"test": "xo"
 	},
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		"mail",
+		"enlarge",
+		"unsubscribe",
+		"promo",
+		"marketing",
+		"chrome",
+		"extension"
+	],
 	"devDependencies": {
-		"xo": "*"
+		"xo": "^0.24.0"
 	},
 	"xo": {
 		"envs": [
