@@ -8,15 +8,16 @@
 }
 
 .unsubscribe {
-    text-align: center;
-    text-decoration: none !important;
     padding: 10px 20px;
     margin: 10px 19px;
+    color: white;
+    text-align: center;
+    text-decoration: none !important;
     font-size: 30px;
+    font-weight: 300;
     font-family: "Open Sans", Helvetica;
     background: rgba(22, 230, 137, 1);
 	border-radius: 8px;
-    color: white;
 }
 
 .unsubscribe::first-letter {

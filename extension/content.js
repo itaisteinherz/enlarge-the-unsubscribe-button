@@ -10,8 +10,12 @@ const domLoaded = new Promise(resolve => {
 	}, 50);
 });
 
+const isMailPage = () => {
+	return Boolean(document.querySelector("h2[data-thread-perm-id]"));
+};
+
 const update = () => {
-	const enlargeRegExp = /^unsubscribe/i;
+	const enlargeRegex = /^unsubscribe/i;
 	const links = selectAll("a");
 
 	if (!links || links.length === 0) {
@@ -20,14 +24,20 @@ const update = () => {
 
 	const fragment = document.createDocumentFragment();
 	const enlarged = document.createElement("div");
+
 	enlarged.classList.add("unsubscribe-container");
 	fragment.append(enlarged);
 
 	for (const link of links) {
-		if (enlargeRegExp.test(link.textContent)) {
+		if (enlargeRegex.test(link.textContent)) {
 			const bigLink = link.cloneNode(true);
 			bigLink.style = {};
 			bigLink.classList.add("unsubscribe");
+
+			for (const child of bigLink.children) {
+				child.style = {};
+			}
+
 			enlarged.append(bigLink);
 		}
 	}
@@ -37,22 +47,15 @@ const update = () => {
 	}
 
 	select("div.nH.aHU").before(fragment);
-	createdButtons = true;
+	return true;
 };
-
-let createdButtons = false;
-let locationChanged = false;
 
 const init = () => {
 	update();
 
 	window.addEventListener("hashchange", () => { // Update on navigation
-		if (createdButtons && !locationChanged) {
-			locationChanged = true;
-		} else if (!createdButtons || locationChanged) {
+		if (isMailPage()) {
 			update();
-			createdButtons = true;
-			locationChanged = false;
 		}
 	});
 };
