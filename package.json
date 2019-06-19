@@ -1,6 +1,6 @@
 {
 	"name": "enlarge-the-unsubscribe-button",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"private": true,
 	"description": "Enlarge the \"unsubscribe\" button in emails",
 	"license": "MIT",
