@@ -1,22 +1,19 @@
 "use strict";
-const select = document.querySelector.bind(document);
-const selectAll = document.querySelectorAll.bind(document);
 
 const domLoaded = new Promise(resolve => {
-	setInterval(() => {
+	const interval = setInterval(() => {
 		if (document.readyState === "complete") {
 			resolve();
+			clearInterval(interval);
 		}
 	}, 50);
 });
 
-const isMailPage = () => {
-	return Boolean(document.querySelector("h2[data-thread-perm-id]"));
-};
+const isMailPage = () => Boolean(document.querySelector("h2[data-thread-perm-id]"));
 
-const update = () => {
+const enlargeUnsubscribeLinks = () => {
 	const enlargeRegex = /^unsubscribe/i;
-	const links = selectAll("a");
+	const links = document.querySelectorAll("a");
 
 	if (!links || links.length === 0) {
 		return;
@@ -46,18 +43,19 @@ const update = () => {
 		return;
 	}
 
-	select("div.nH.aHU").before(fragment);
+	document.querySelector("div.nH.aHU").before(fragment);
 	return true;
 };
 
-const init = () => {
-	update();
+(async () => {
+	await domLoaded;
 
-	window.addEventListener("hashchange", () => { // Update on navigation
+	enlargeUnsubscribeLinks();
+
+	// Enlarge links on navigation
+	window.addEventListener("hashchange", () => {
 		if (isMailPage()) {
-			update();
+			enlargeUnsubscribeLinks();
 		}
 	});
-};
-
-domLoaded.then(init);
+})();
